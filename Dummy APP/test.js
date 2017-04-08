@@ -52,7 +52,7 @@ function start() {
     // 3. Initialize and make the API request.
     return gapi.client.request({
       'path': 'https://www.googleapis.com/youtube/v3/videos?id=7lCDEYXw3mM&key=' + key +
-     '&part=snippet,contentDetails,statistics,status'
+     '&part=snippet,contentDetails,'
     });
   }).then(function(response) {
     console.log(response.result);
