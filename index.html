@@ -10,7 +10,7 @@
 
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <title>Material Design Bootstrap</title>
+    <title>Map and Video</title>
 
     <!-- Font Awesome -->
 
@@ -18,7 +18,7 @@
 
     <!-- Bootstrap core CSS -->
 
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="assets/css/bootstrap.min.css" rel="stylesheet"> -->
 
     <!-- Material Design Bootstrap -->
 
@@ -27,6 +27,19 @@
     <!-- Your custom styles (optional) -->
 
     <link href="assets/css/style.css" rel="stylesheet">
+
+    <!-- JQuery -->
+
+    <!-- <script type="text/javascript" src="assets/javascript/jquery-3.1.1.min.js"></script> -->
+
+    <!-- Bootstrap core JavaScript -->
+
+    <!-- <script type="text/javascript" src="assets/javascript/bootstrap.min.js"></script> -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 
 </head>
 
@@ -48,6 +61,7 @@
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
                         <a class="nav-link">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link">Work <span class="sr-only">(current)</span></a>
                     </li>
                 </ul>
 
@@ -55,33 +69,63 @@
         </div>
     </nav>
 
-
+    Main Body
 
     <div class="container card-container">
 
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8">
+                <!-- Profile Card -->
+
+                <div></div>
 
                 <!--Card-->
 
-                <div class="card">
+                <div class="card grey">
 
-                    <!--Card image-->
+                    <!--Location-->
+
+                    <div id="place" style="text-align: center;">
+                        <h1>Home</h1>
+                    </div>
+
+
+                    <!-- YouTube Player -->
+
+                    <div id="player"></div>
 
                     <div class="view overlay hm-white-slight">
-                        <img src="https://mdbootstrap.com/images/reg/reg%20(2).jpg" style="width: 100%" class="img-fluid" alt="">
-                        <a>
-                            <div class="mask"></div>
-                        </a>
                         <div class="video-location">
-                            <h2>Video shows up here</h2>
-                            <div id="player"></div>
+                            <form id="search-form" class=" waves-effect waves-light">
+                                <input type="text" id= "search-yt" class="form-control" placeholder="Search">
+                                <button type="button" id="search-button" class="btn btn-info">Submit</button>
+                            </form>
+
+
 
                         </div>  
                     </div>
 
+                    <div id="button-location"></div>
+
                     <!--/.Card image-->
+
+
+
+
+                    <!-- Google Map Div-->
+
+                    <div>
+                        <h1>Map Shows Up Here</h1>
+
+                        <div id="location"></div>
+
+                        <div id="map-canvas"></div> 
+
+
+                    </div>
+
 
                     <!--Card content-->
 
@@ -89,42 +133,55 @@
 
                         <!--Title-->
 
-                        <h4 class="card-title">Card title</h4>
+                        <h4 class="card-title"></h4>
 
                         <!--Text-->
 
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <p class="card-text"></p>
 
                         <!-- Search -->
+                        <!-- Button -->
 
-                        <form class=" waves-effect waves-light">
-
-                            <input class="form-control" type="text" placeholder="Search">
-
-                            <!-- Button -->
-
-                            <a  id="search-button" class="btn btn-success">Button</a>
-
-                        </form>
+                        <button type="button" class="btn btn-default" id="new-card">
+                          <span class="glyphicon glyphicon-plus"></span> 
+                      </button>
 
 
 
-                    </div>
+                  </div>
 
-                    <!--/.Card content-->
+                  <!--/.Card content-->
 
-                </div>
-                <!--/.Card-->
+              </div>
 
-            </div>
-        </div>
+              <!--/.Card-->
+
+          </div>
+
+          <!-- Working Form -->
+
+
+<!-- <form id="address-form">
+            <label for="current-address">Please type in your current address - </label>
+            <input type="text" id="current-address" class="form-control" placeholder="Current Address">
+            <label for="card-address">Please provide new location address</label>
+            <input type="text" id="card-address" class="form-control" placeholder="Card Address">
+            <button type="submit" id="address-submit" class="btn btn-danger">Address</button>
+
+        </form> -->
+
+
     </div>
+</div>
 
-    <!-- SCRIPTS -->
+<!-- SCRIPTS -->
 
-    <script src="assets/javascript/logic.js"</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyByJcZ1QEqadlm9GhGA00nnGwpCI4D9-bk&callback=initMap">
+</script>
 
-    
+<script src="assets/javascript/logic.js"</script>
+
+
 
     <!-- JQuery -->
 
@@ -134,16 +191,10 @@
 
     <script type="text/javascript" src="assets/javascript/tether.min.js"></script>
 
-    <!-- Bootstrap core JavaScript -->
-
-    <script type="text/javascript" src="assets/javascript/bootstrap.min.js"></script>
 
     <!-- MDB core JavaScript -->
 
     <script type="text/javascript" src="assets/javascript/mdb.min.js"></script>
-
-    <script type="text/javascript" src="assets/javascript/location.js"></script>
-
 
 </body>
 

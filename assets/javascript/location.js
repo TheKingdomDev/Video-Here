@@ -1,6 +1,6 @@
 jQuery( document ).ready( function($) {
  
-    $( "#get-mylocation" ).onload( function(e) {
+    $( "#get-mylocation" ).load( function(e) {
         e.preventDefault();
  
         /* Chrome need SSL! */
