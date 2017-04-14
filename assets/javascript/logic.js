@@ -1,50 +1,56 @@
-console.log("linked");
-// ---------------------------------------------------ONLOAD 
-
-// window.onload = getMyLocation; 
-
-
-// ---------------------------------------------------GLOBAL VARIABLES
-
-
 var map;
 var youtubeKey = "AIzaSyC6BkKzkgAhJoLwYgb2JgtY6UhCEqdN0ng";
 var queryURL = "https://www.googleapis.com/youtube/v3/search";
 
 var searchVideos = ["cats", "food", "dogs"];
 var searchVideosSchool = ["HTML", "CSS", "JavaScript"];
+var searchVideosCaribou = ["Surfing", "Bahamas", "Moose"];
 
-var homeLongitude = -80.820793;
+
 var homeLatitude = 35.145922;
+var homeLatitudeLow = (homeLatitude - 0.00144927536231884);
+var homeLatitudeHigh = (homeLatitude + 0.00144927536231884);
+var homeLongitude = -80.820793;
+var homeLongitudeLow = (homeLongitude - 0.001785714285714285714285714285714);
+var homeLongitudeHigh = (homeLongitude + 0.001785714285714285714285714285714);
 
-var schoolLongitude = -80.8351357;
 var schoolLatitude = 35.2282027;
+var schoolLatitudeLow = (schoolLatitude - 0.00144927536231884);
+var schoolLatitudeHigh = (schoolLatitude + 0.00144927536231884);
+var schoolLongitude = -80.8351357;
+var schoolLongitudeLow = (schoolLongitude - 0.001785714285714285714285714285714);
+var schoolLongitudeHigh = (schoolLongitude + 0.001785714285714285714285714285714);
 
-var ameliesNodaLatitude = 35.2416243;
-var ameliesNodaLongitude = -80.8121106;
-
+var caribouCoffeeLatitude = 35.1469818;
+var caribouCoffeeLatitudeLow = (caribouCoffeeLatitude - 0.00144927536231884);
+var caribouCoffeeLatitudeHigh = (caribouCoffeeLatitude + 0.00144927536231884);
+var caribouCoffeeLongitude = -80.8088891;
+var caribouCoffeeLongitudeLow = (caribouCoffeeLongitude - 0.001785714285714285714285714285714);
+var caribouCoffeeLongitudeHigh = (caribouCoffeeLongitude + 0.001785714285714285714285714285714);
 
 var cloneCounter = 1;
+
+var latBuffer = 0.00144927536231884;
+var longBuffer = 0.001785714285714285714285714285714;
 
 // ---------------------------------------------------FUNCTIONS
 
 $(document).ready(function() {
-    var cardPrototype = $(".card-container");
+    var cardPrototype = $(".playerlocation");
 
     var newCard = function() {
         var carteNouveau = cardPrototype.clone();
-        $("body")
+        $(".master-container")
             .append($("<div>")
                 .addClass(("clone" + cloneCounter))
                 .append(carteNouveau));
         carteNouveau.find("#new-card-btn").click(newCard);
         cloneCounter++;
-        console.log("New card created with class reflecting clone number");
     }
-
     $("#new-card-btn").on("click", function() {
         newCard();
     });
+
     getMyLocation();
 
     // RENDER YOUTUBE SEARCH QUIERIES 
@@ -65,7 +71,6 @@ $(document).ready(function() {
         searchVideos.push(video);
 
         renderButtons(searchVideos);
-
 
     });
 
@@ -95,7 +100,6 @@ $(document).ready(function() {
 
     });
 
-
     $("#address-submit").on("click", function() {
 
         event.preventDefault();
@@ -111,19 +115,13 @@ $(document).ready(function() {
             $("#address-success").append('<img src="http://vignette2.wikia.nocookie.net/sonic/images/9/9c/Mario_-_Mario_Party_10.png/revision/latest?cb=20150609205200">');
             console.log("score");
         }
-
     });
-
-
 });
 
 // ---------------------------------------------------YOUTUBE API
 
-
 function youtubeApiCall() {
     var searchText = $("#search-yt").val().trim();
-
-
 
     $.ajax({
         cache: false,
@@ -170,10 +168,7 @@ function renderButtons(e) {
     }
 }
 
-
 // ---------------------------------------------------LOCATION FUNCTIONS
-
-
 
 function getMyLocation() {
     if (navigator.geolocation) {
@@ -186,7 +181,7 @@ function getMyLocation() {
 function displayLocation(position) {
     // Function Varibles
     var latitude = position.coords.latitude;
-    console.log(latitude)
+    // console.log(latitude)
     var longitude = position.coords.longitude;
     var latLng = new google.maps.LatLng(latitude, longitude);
     // Internal Functions
@@ -196,15 +191,18 @@ function displayLocation(position) {
     var div = document.getElementById("location");
     div.innerHTML = ("You are at Latitude: " + latitude + ", Longitude: " + longitude);
 
-    if (longitude == homeLongitude && latitude == homeLatitude) {
+    if (latitude >= homeLatitudeLow && latitude <= homeLatitudeHigh && longitude >= homeLongitudeLow && longitude <= homeLongitudeHigh) {
         home();
         console.log("You are at home");
-
-    } else if (longitude == schoolLongitude && latitude == schoolLatitude) {
+    } else if (latitude >= caribouCoffeeLatitudeLow && latitude <= caribouCoffeeLatitudeHigh && longitude >= caribouCoffeeLongitudeLow && longitude <= caribouCoffeeLongitudeHigh) {
+        console.log("You are at caribou");
+        caribou();
+    } else if (latitude >= schoolLatitudeLow && latitude <= schoolLatitudeHigh && longitude >= schoolLongitudeLow && longitude <= schoolLongitudeHigh) {
         school();
         console.log("You are at school");
-        
     } else {
+        console.log(latitude)
+        console.log(longitude)
         console.log("Not Available")
     };
 }
@@ -246,14 +244,16 @@ function addInfoWindow(marker, latLng, content) {
     google.maps.event.addListener(marker, "click", function() {
         infoWindow.open(map);
     });
-
 }
 
 function school() {
     $("#place").html('<h1>School</h1>');
     renderButtons(searchVideosSchool);
-    console.log("fired")
-        // body...
+}
+
+function caribou() {
+    $("#place").text("Location: Caribou");
+    renderButtons(searchVideosCaribou);
 }
 
 function validate() {
@@ -264,3 +264,5 @@ function validate() {
         return false;
     }
 }
+
+
