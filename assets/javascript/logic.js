@@ -29,6 +29,7 @@ var caribouCoffeeLongitudeLow = (caribouCoffeeLongitude - 0.00178571428571428571
 var caribouCoffeeLongitudeHigh = (caribouCoffeeLongitude + 0.001785714285714285714285714285714);
 
 var cloneCounter = 1;
+var newLocationCounter = 1;
 
 var latBuffer = 0.00144927536231884;
 var longBuffer = 0.001785714285714285714285714285714;
