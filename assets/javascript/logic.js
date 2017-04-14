@@ -41,9 +41,9 @@ $(document).ready(function() {
     var newCard = function() {
         var carteNouveau = cardPrototype.clone();
         $(".master-container")
-            .append($("<div>")
-                .addClass(("clone" + cloneCounter))
-                .append(carteNouveau));
+        .append($("<div>")
+            .addClass(("clone" + cloneCounter))
+            .append(carteNouveau));
         carteNouveau.find("#new-card-btn").click(newCard);
         cloneCounter++;
     }
@@ -265,4 +265,11 @@ function validate() {
     }
 }
 
+$("#formReveal").on("click", function() {
+    $("#formDiv").removeClass("hidden");
+});
+
+$("#newLocationSubmit").on("click", function() {
+    $("#formDiv").addClass("hidden");
+});
 

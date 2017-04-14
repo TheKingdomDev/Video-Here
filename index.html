@@ -27,100 +27,157 @@
     <!--Navigation Bar-->
     <nav class="navbar 
     navbar-toggleable-md navbar-dark elegant-color-dark">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <strong>Video Here</strong>
-            </a>
-            <div class="collapse navbar-collapse" id="navbarNav1">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Bootstrap Master Grid-->
-    <div class="container master-container">
-        <div class="playerlocation">
-            <div class="row">
-                <div class="col-md-6">
-                    <!-- YouTube Player Card -->
-                    <div class="card-container">
-                        <!--Card-->
-                        <div class="card grey">
-                            <div id="player"></div>
-                            <div class="card-block">
-                                <!--Title-->
-                                <h2 class="card-title">YouTube Player</h2>
-                                <!--Text-->
-                                <p class="card-text text-center"> Type your query into the search field and click the submit button.</p>
-                                <div class="view overlay hm-white-slight">
-                                    <div class="video-location text-center">
-                                        <form id="search-form" class=" waves-effect waves-light text-center">
-                                            <input type="text" id="search-yt" class="form-control" placeholder="Search">
-                                            <div id="validate"></div>
-                                            <button type="button" id="search-button" class="btn btn-info">Submit</button>
-                                        </form>
-                                        <div id="button-location"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--/.Card content-->
-                        </div>
-                        <!--/.Card-->
-                    </div>
-                    <!-- Card Container-->
-                </div>
-                <!--/.col-md-6 -->
-                <!-- Google Maps Location Card -->
-                <div class="col-md-6">
-                    <div class="card-container">
-                        <!--Card-->
-                        <div class="card grey text-center">
-                            <div id="map-canvas"></div>
-                            <!--/.Card image-->
-                            <!--Card content-->
-                            <div class="card-block">
-                                <!--Title-->
-                                <h2 class="card-title" id="place">Location: Home</h2>
-                                <!--Text-->
-                                <div class="text-center" id="location"></div>
-                            </div>
-                            <!--/.Card content-->
-                            <button type="button" class="btn btn-default" id="new-card-btn">
-                                <span class="glyphicon glyphicon-plus"></span>
-                            </button>
-                        </div>
-                        <!--/.Card-->
-                    </div>
-                    <!-- Card Container -->
-                </div>
-                <!--/.col-md-6 -->
-            </div>
-            <!-- /.row-->
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <strong>Video Here</strong>
+        </a>
+        <div class="collapse navbar-collapse" id="navbarNav1">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                </li>
+            </ul>
         </div>
     </div>
-    <!--/.ccontainer-->
+</nav>
 
-    <footer>
-        <div class="container page-footer">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <p>Copyright &copy; 2017, All Rights Reserved</p>
+<!-- Bootstrap Master Grid-->
+<div class="container master-container">
+    <div class="playerlocation">
+        <div class="row">
+            <div class="col-md-6">
+                <!-- YouTube Player Card -->
+                <div class="card-container">
+                    <!--Card-->
+                    <div class="card grey">
+                        <div id="player"></div>
+                        <div class="card-block">
+                            <!--Title-->
+                            <h2 class="card-title">YouTube Player</h2>
+                            <!--Text-->
+                            <p class="card-text text-center"> Type your query into the search field and click the submit button.</p>
+                            <div class="view overlay hm-white-slight">
+                                <div class="video-location text-center">
+                                    <form id="search-form" class=" waves-effect waves-light text-center">
+                                        <input type="text" id="search-yt" class="form-control" placeholder="Search">
+                                        <div id="validate"></div>
+                                        <button type="button" id="search-button" class="btn btn-info">Submit</button>
+                                    </form>
+                                    <div id="button-location"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--/.Card content-->
+                    </div>
+                    <!--/.Card-->
                 </div>
+                <!-- Card Container-->
+            </div>
+            <!--/.col-md-6 -->
+            <!-- Google Maps Location Card -->
+            <div class="col-md-6">
+                <div class="card-container">
+                    <!--Card-->
+                    <div class="card grey text-center">
+                        <div id="map-canvas"></div>
+                        <!--/.Card image-->
+                        <!--Card content-->
+                        <div class="card-block">
+                            <!--Title-->
+                            <h2 class="card-title" id="place">Location: Home</h2>
+                            <!--Text-->
+                            <div class="text-center" id="location"></div>
+                        </div>
+                        <!--/.Card content-->
+                        <button type="button" class="btn btn-default" id="new-card-btn">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+
+                         <button type="button" class="btn btn-success" id="formReveal">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                    </div>
+                    <!--/.Card-->
+                </div>
+                <!-- Card Container -->
+            </div>
+            <!--/.col-md-6 -->
+        </div>
+        <!-- /.row-->
+    </div> 
+
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+        <div class="card-block grey hidden" id="formDiv">
+
+                <!--Header-->
+                <div class="text-center">
+                    <h2>Add a Location</h2>
+                    <hr class="mt-2 mb-2">
+                </div>
+
+                <!--Body-->
+                <div class="md-form">
+                    <input type="text" id="" class="form-control">
+                    <label for="form3">Location Name</label>
+                </div>
+
+                <div class="md-form">
+                    <input type="text" id="" class="form-control">
+                    <label>Location Address</label>
+                </div>
+
+                <div class="md-form">
+                    <input type="text" id="" class="form-control">
+                    <label>Interest #1</label>
+                </div>
+
+                <div class="md-form">
+                    <input type="text" id="" class="form-control"></input>
+                    <label>Interest #2</label>
+                </div>
+
+                <div class="md-form">
+                    <input type="text" id="" class="form-control"></input>
+                    <label>Interest #3</label>
+                </div>
+
+                <div class="text-center">
+                    <button class="btn btn-default" id="newLocationSubmit">Submit</button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>  
+
+</div>
+<!--/.ccontainer-->
+
+<!--Naked Form-->
+
+
+
+
+<footer>
+    <div class="container page-footer">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <p>Copyright &copy; 2017, All Rights Reserved</p>
             </div>
         </div>
-    </footer>
+    </div>
+</footer>
 
-    <!-- SCRIPTS -->
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyByJcZ1QEqadlm9GhGA00nnGwpCI4D9-bk&callback=initMap"></script>
-    <script src="assets/javascript/logic.js" </script>
-    </script>
-    <!-- Bootstrap tooltips -->
-    <script type="text/javascript" src="assets/javascript/tether.js"></script>
-    <!-- MDB core JavaScript -->
-    <script type="text/javascript" src="assets/javascript/mdb.js"></script>
+<!-- SCRIPTS -->
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyByJcZ1QEqadlm9GhGA00nnGwpCI4D9-bk&callback=initMap"></script>
+<script src="assets/javascript/logic.js" </script>
+</script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="assets/javascript/tether.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="assets/javascript/mdb.js"></script>
 </body>
 
 </html>
