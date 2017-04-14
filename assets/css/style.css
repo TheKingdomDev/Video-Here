@@ -1,10 +1,45 @@
-/* YOUR CUSTOM STYLES */
-.card-container{
-	margin-top: 10px;
+    /* YOUR CUSTOM STYLES */
+
+.card-container {
+    margin-top: 10px;
 }
 
 #map-canvas {
-        width: 500px;
-        height: 500px;
-        background-color: grey;
-      }
+    width: 555px;
+    height: 372px;
+    background-color: grey;
+}
+
+.card-title {
+    text-align: center;
+}
+
+#middle{
+    margin-top: 10px;
+}
+
+img.demo{
+    width: 100%; 
+    padding: 3px;
+    border: 1px solid #ccc;
+}
+
+footer {
+    background: black;
+    color: #fff;
+    padding: 30px 0 20px 0;
+}
+
+footer li {
+    float: left;
+    padding: 0 10px 0 10px;
+    list-style: none;
+}
+
+footer a {
+    color: #fff;
+}
+
+footer p {
+    float: right;
+}

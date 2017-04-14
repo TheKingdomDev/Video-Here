@@ -1,201 +1,246 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-
-    <title>Map and Video</title>
-
+    <title>Video Here</title>
     <!-- Font Awesome -->
-
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
-
-    <!-- Bootstrap core CSS -->
-
-    <!-- <link href="assets/css/bootstrap.min.css" rel="stylesheet"> -->
-
-    <!-- Material Design Bootstrap -->
-
-    <link href="assets/css/mdb.min.css" rel="stylesheet">
-
-    <!-- Your custom styles (optional) -->
-
-    <link href="assets/css/style.css" rel="stylesheet">
-
-    <!-- JQuery -->
-
-    <!-- <script type="text/javascript" src="assets/javascript/jquery-3.1.1.min.js"></script> -->
-
-    <!-- Bootstrap core JavaScript -->
-
-    <!-- <script type="text/javascript" src="assets/javascript/bootstrap.min.js"></script> -->
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Bootstrap & CSS Links-->
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional Bootstrap Theme CSS CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrL`  RTvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- Material Design Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.3.1/css/mdb.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <!-- jQuery-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <!-- Bootstrap JavaScript-->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-
 </head>
 
 <body class="elegant-color">
 
-    <!--Navbar-->
 
-    <nav class="navbar navbar-toggleable-md navbar-dark elegant-color-dark">
+    <!--Navigation Bar-->
+    <nav class="navbar 
+    navbar-toggleable-md navbar-dark elegant-color-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <strong>Video Here</strong>
+        </a>
 
-        <div class="container">
+        <div class="collapse navbar-collapse" id="navbarNav1">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
 
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav1" aria-controls="navbarNav1" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <a class="navbar-brand" href="#">
-                <strong>Navbar</strong>
-            </a>
-            <div class="collapse navbar-collapse" id="navbarNav1">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link">Home <span class="sr-only">(current)</span></a>
-                        <a class="nav-link">Work <span class="sr-only">(current)</span></a>
-                    </li>
-                </ul>
+<!-- Bootstrap Master Grid-->
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 grey text-center"> 
+            <h1> Video Here Demo </h1>  
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <!-- YouTube Player Card -->
+            <div class="card-container">
+                <!--Card-->
+                <div class="card grey">
+                    <!--Card image-->
+                    <!-- <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" alt="Card image cap"> -->
+                    <div id="player"></div>
+                    <!--/.Card image-->
+                    <!--Card content-->
+                    <div class="card-block">
+                        <!--Title-->
+                        <h2 class="card-title">YouTube Player</h2>
+                        <!--Text-->
+                        <p class="card-text text-center"> Type your query into the search field and click the submit button.</p>
+                        <div class="view overlay hm-white-slight">
+                            <div class="video-location text-center">
+                                <form id="search-form" class=" waves-effect waves-light text-center">
+                                    <input type="text" id="search-yt" class="form-control" placeholder="Search">
+                                    <div id="validate"></div>
+                                    <button type="button" id="search-button" class="btn btn-info">Submit</button>
+                                </form>
+                                <div id="button-location"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/.Card content-->
+                </div>
+                <!--/.Card-->
+            </div>
+            <!-- Card Container-->
+        </div>
+        <!--/.col-md-6 -->
+
+
+        <!-- Google Maps Location Card -->
+
+
+        <div class="col-md-6">
+            <div class="card-container">
+                <!--Card-->
+                <div class="card grey">
+                    <div id="map-canvas"></div>
+                    <!--/.Card image-->
+                    <!--Card content-->
+                    <div class="card-block">
+                        <!--Title-->
+                        <h2 class="card-title">Location: Home</h2>
+                        <!--Text-->
+                        <p class="card-text text-center"></p>
+                        <div class="text-center" id="location"></div>
+                    </div>
+                    <!--/.Card content-->
+                </div>
+                <!--/.Card-->
+            </div> <!-- Card Container -->
+
+
+        </div> <!--/.col-md-6 -->
+    </div>
+    <!-- /.row-->
+
+
+    <!-- Repeat Button -->
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="container card-container">
+                <div class="card grey">
+                    <div id="place" style="text-align: center;">
+                        <h1>Repeat Button</h1>
+                    </div>
+                    <div class="card-block grey text-center">
+                        <!--Title-->
+                        <h4 class="card-title"></h4>
+                        <!--Text-->
+                        <p class="card-text"></p>
+                        <button type="button" class="btn btn-default" id="new-card-btn">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!--/.card-container-->
+        </div>
+        <!--/.col-md-12-->
+    </div>
+    <!--/.row-->
+
+
+
+
+    <!--     Team Member Cards -->
+    <div class="row">
+        <div class="col-md-4">
+
+            <!--Card-->
+            <div class="card grey">
+
+                <!--Card image-->
+                <img src="assets/img/demo2.jpg" class=" img-fluid demo">
+                <!--/.Card image-->
+
+                <!--Card content-->
+                <div class="card-block">
+                    <!--Title-->
+                    <h4 class="card-title">Eric King</h4>
+                    <!--Text-->
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+                <!--/.Card content-->
 
             </div>
+            <!--/.Card-->
+
         </div>
-    </nav>
 
-    Main Body
+        <div class="col-md-4">
 
-    <div class="container card-container">
+            <!--Card-->
+            <div class="card grey">
 
-        <div class="row">
-            <div class="col-md-2"></div>
-            <div class="col-md-8">
-                <!-- Profile Card -->
+                <!--Card image-->
+                <img src="assets/img/demo2.jpg" class=" img-fluid demo">
+                <!--/.Card image-->
 
-                <div></div>
+                <!--Card content-->
+                <div class="card-block">
+                    <!--Title-->
+                    <h4 class="card-title">Ed Nixon</h4>
+                    <!--Text-->
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+                <!--/.Card content-->
 
-                <!--Card-->
+            </div>
+            <!--/.Card-->
 
-                <div class="card grey">
+        </div>
 
-                    <!--Location-->
+        <div class="col-md-4">
 
-                    <div id="place" style="text-align: center;">
-                        <h1>Home</h1>
-                    </div>
+            <!--Card-->
+            <div class="card grey">
 
+                <!--Card image-->
+                <img src="assets/img/demo2.jpg" class=" img-fluid demo">
+                <!--/.Card image-->
 
-                    <!-- YouTube Player -->
+                <!--Card content-->
+                <div class="card-block">
+                    <!--Title-->
+                    <h4 class="card-title">Gary Newton </h4>
+                    <!--Text-->
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+                <!--/.Card content-->
 
-                    <div id="player"></div>
+            </div>
+            <!--/.Card-->
 
-                    <div class="view overlay hm-white-slight">
-                        <div class="video-location">
-                            <form id="search-form" class=" waves-effect waves-light">
-                                <input type="text" id= "search-yt" class="form-control" placeholder="Search">
-                                <button type="button" id="search-button" class="btn btn-info">Submit</button>
-                            </form>
+        </div>
 
+    </div> <!-- row -->
 
-
-                        </div>  
-                    </div>
-
-                    <div id="button-location"></div>
-
-                    <!--/.Card image-->
-
-
-
-
-                    <!-- Google Map Div-->
-
-                    <div>
-                        <h1>Map Shows Up Here</h1>
-
-                        <div id="location"></div>
-
-                        <div id="map-canvas"></div> 
-
-
-                    </div>
-
-
-                    <!--Card content-->
-
-                    <div class="card-block grey text-center">
-
-                        <!--Title-->
-
-                        <h4 class="card-title"></h4>
-
-                        <!--Text-->
-
-                        <p class="card-text"></p>
-
-                        <!-- Search -->
-                        <!-- Button -->
-
-                        <button type="button" class="btn btn-default" id="new-card">
-                          <span class="glyphicon glyphicon-plus"></span> 
-                      </button>
-
-
-
-                  </div>
-
-                  <!--/.Card content-->
-
-              </div>
-
-              <!--/.Card-->
-
-          </div>
-
-          <!-- Working Form -->
-
-
-<!-- <form id="address-form">
-            <label for="current-address">Please type in your current address - </label>
-            <input type="text" id="current-address" class="form-control" placeholder="Current Address">
-            <label for="card-address">Please provide new location address</label>
-            <input type="text" id="card-address" class="form-control" placeholder="Card Address">
-            <button type="submit" id="address-submit" class="btn btn-danger">Address</button>
-
-        </form> -->
-
-
-    </div>
 </div>
+<!--/.ccontainer-->
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <p>Copyright &copy; 2017, All Rights Reserved</p>
+            </div>
+        </div>
+    </div>
+</footer>
 
 <!-- SCRIPTS -->
-
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyByJcZ1QEqadlm9GhGA00nnGwpCI4D9-bk&callback=initMap">
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyByJcZ1QEqadlm9GhGA00nnGwpCI4D9-bk&callback=initMap"></script>
+<script src="assets/javascript/logic.js" </script>
 </script>
-
-<script src="assets/javascript/logic.js"</script>
-
-
-
-    <!-- JQuery -->
-
-    <script type="text/javascript" src="assets/javascript/jquery-3.1.1.min.js"></script>
-
-    <!-- Bootstrap tooltips -->
-
-    <script type="text/javascript" src="assets/javascript/tether.min.js"></script>
-
-
-    <!-- MDB core JavaScript -->
-
-    <script type="text/javascript" src="assets/javascript/mdb.min.js"></script>
-
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="assets/javascript/tether.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="assets/javascript/mdb.js"></script>
 </body>
 
 </html>
