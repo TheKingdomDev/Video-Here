@@ -13,8 +13,7 @@ A web-based application that generates a YouTube player with pre-selected search
 # Trello Board
 - https://trello.com/b/2KfTSAjb
 
-## Screenshots
-Include a one or two screenshots of main UI/UX points of your app and how it solves a problem
+## Demo
 
 ## Technologies used
 
@@ -54,7 +53,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ## Built With
 
-* Sublime Text
+* Sublime Text 3
 
 ## Original Idea & Application Concept
 
