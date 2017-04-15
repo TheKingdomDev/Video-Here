@@ -56,7 +56,8 @@ $(document).ready(function() {
 
     // RENDER YOUTUBE SEARCH QUIERIES 
 
-    renderButtons(searchVideos);
+    renderButtons(searchVideosSchool);
+    buttonYoutube();
 
     $("#search-button").on("click", function() {
         console.log("clicked");
@@ -69,54 +70,15 @@ $(document).ready(function() {
 
         var video = $("#search-yt").val().trim();
 
-        searchVideos.push(video);
+        searchVideosSchool.push(video);
 
-        renderButtons(searchVideos);
-
-    });
-
-    $(".new-search").on("click", function() {
-        var buttonText = $(this).text();
-        $.ajax({
-            cache: false,
-            data: $.extend({
-                key: youtubeKey,
-                part: "snippet",
-                q: buttonText
-            }, { maxResults: 1 }),
-            dataType: "json",
-            url: queryURL,
-            timeout: 5000,
-            type: "GET"
-
-        }).done(function(response) {
-            console.log(response);
-            for (var i = 0; i < response.items.length; i++) {
-                var title = response.items[i].snippet.thumbnails.title;
-                var videoId = response.items[i].id.videoId;
-
-                $("#player").append('<iframe width="555" height="370" src="https://www.youtube.com/embed/' + videoId + '"' + 'frameborder="0" allowfullscreen></iframe>');
-            }
-        });
+        renderButtons(searchVideosSchool);
 
     });
 
-    $("#address-submit").on("click", function() {
+    
 
-        event.preventDefault();
-        validate();
-
-        var currentAddress = $("#current-address").val().trim();
-        var cardAddress = $("#card-address").val().trim();
-
-        if (currentAddress !== cardAddress) {
-            console.log("wrong!");
-            $("#address-fail").append('<img src="http://download.gamezone.com/uploads/image/data/1204957/star-wars-darth-vader-sixth-scale-feature-1000763.jpg">');
-        } else {
-            $("#address-success").append('<img src="http://vignette2.wikia.nocookie.net/sonic/images/9/9c/Mario_-_Mario_Party_10.png/revision/latest?cb=20150609205200">');
-            console.log("score");
-        }
-    });
+    
 });
 
 // ---------------------------------------------------YOUTUBE API
@@ -146,6 +108,34 @@ function youtubeApiCall() {
         }
     });
 
+}
+
+function buttonYoutube() {
+    $(".new-search").on("click", function() {
+        var buttonText = $(this).text();
+        $.ajax({
+            cache: false,
+            data: $.extend({
+                key: youtubeKey,
+                part: "snippet",
+                q: buttonText
+            }, { maxResults: 1 }),
+            dataType: "json",
+            url: queryURL,
+            timeout: 5000,
+            type: "GET"
+
+        }).done(function(response) {
+            console.log(response);
+            for (var i = 0; i < response.items.length; i++) {
+                var title = response.items[i].snippet.thumbnails.title;
+                var videoId = response.items[i].id.videoId;
+
+                $("#player").append('<iframe width="555" height="370" src="https://www.youtube.com/embed/' + videoId + '"' + 'frameborder="0" allowfullscreen></iframe>');
+            }
+        });
+
+    });
 }
 
 function renderButtons(e) {
@@ -202,9 +192,9 @@ function displayLocation(position) {
         school();
         console.log("You are at school");
     } else {
-        console.log(latitude)
-        console.log(longitude)
-        console.log("Not Available")
+        console.log(latitude);
+        console.log(longitude);
+        console.log("Not Available");
     };
 }
 
@@ -234,6 +224,21 @@ function createMarker(latLng) {
     addInfoWindow(marker, latLng, content);
 }
 
+// function codeAddress() {
+//     var address = $('#address').val();
+//     geocoder.geocode( { 'address': address}, function(results, status) {
+//       if (status == 'OK') {
+//         map.setCenter(results[0].geometry.location);
+//         var marker = new google.maps.Marker({
+//             map: map,
+//             position: results[0].geometry.location
+//         });
+//       } else {
+//         alert('Geocode was not successful for the following reason: ' + status);
+//       }
+//     });
+//   }
+
 function addInfoWindow(marker, latLng, content) {
     var infoWindowOptions = {
         content: content,
@@ -257,20 +262,68 @@ function caribou() {
     renderButtons(searchVideosCaribou);
 }
 
-function validate() {
-    var x = $("#search-yt").val();
-    if (x == "") {
-        $("#validate").html('<h3>Please provide an input search!</h3>');
-        $("#search-yt").focus();
-        return false;
-    }
-}
+
 
 $("#formReveal").on("click", function() {
+
     $("#formDiv").removeClass("hidden");
+    validateForm();
+
 });
 
 $("#newLocationSubmit").on("click", function() {
     $("#formDiv").addClass("hidden");
+    var title = $("#locationName").val().trim();
+    var searchOne = $("#interest1").val().trim();
+    var searchTwo = $("#interest2").val().trim();
+    var searchThree = $("#interest3").val().trim();
+
+    $("#place").text("Location: " + title);
+
+    searchVideosSchool.push(searchOne);
+    searchVideosSchool.push(searchTwo);
+    searchVideosSchool.push(searchThree);
+
+    renderButtons(searchVideosSchool);
+    getMyLocation();
+    
+
+    $(".new-search").on("click", function() {
+        buttonYoutube();
+    });
 });
 
+
+function validateForm() {
+    
+  // Initialize form validation on the registration form.
+  // It has the name attribute "registration"
+  $("form[name='newLocation']").validate({
+    // Specify validation rules
+    rules: {
+      // The key name on the left side is the name attribute
+      // of an input field. Validation rules are defined
+      // on the right side
+      locationName: {
+        required: true,
+        minlength: 2
+      },
+      interest1: "required",
+      interest2: "required",
+      interest3: "required"
+    },
+    // Specify validation error messages
+    messages: {
+      locationName: "Please enter a location",
+      interest1: "Please enter an interest",
+      interest2: "Please enter an interest",
+      interest3: "Please enter an interest"
+      
+    },
+    // Make sure the form is submitted to the destination defined
+    // in the "action" attribute of the form when valid
+    submitHandler: function(form) {
+      form.submit();
+    }
+  });
+}
