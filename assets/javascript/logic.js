@@ -57,7 +57,7 @@ $(document).ready(function() {
     // RENDER YOUTUBE SEARCH QUIERIES 
 
     renderButtons(searchVideosSchool);
-    buttonYoutube();
+    
 
     $("#search-button").on("click", function() {
         console.log("clicked");
@@ -76,6 +76,32 @@ $(document).ready(function() {
 
     });
 
+        $("#button-location").on("click", ".new-search", function() {
+            console.log("clicked");
+        var buttonText = $(this).text();
+        $.ajax({
+            cache: false,
+            data: $.extend({
+                key: youtubeKey,
+                part: "snippet",
+                q: buttonText
+            }, { maxResults: 1 }),
+            dataType: "json",
+            url: queryURL,
+            timeout: 5000,
+            type: "GET"
+
+        }).done(function(response) {
+            console.log(response);
+            for (var i = 0; i < response.items.length; i++) {
+                var title = response.items[i].snippet.thumbnails.title;
+                var videoId = response.items[i].id.videoId;
+
+                $("#player").append('<iframe width="555" height="370" src="https://www.youtube.com/embed/' + videoId + '"' + 'frameborder="0" allowfullscreen></iframe>');
+            }
+        });
+
+    });
     
 
     
@@ -110,33 +136,8 @@ function youtubeApiCall() {
 
 }
 
-function buttonYoutube() {
-    $(".new-search").on("click", function() {
-        var buttonText = $(this).text();
-        $.ajax({
-            cache: false,
-            data: $.extend({
-                key: youtubeKey,
-                part: "snippet",
-                q: buttonText
-            }, { maxResults: 1 }),
-            dataType: "json",
-            url: queryURL,
-            timeout: 5000,
-            type: "GET"
 
-        }).done(function(response) {
-            console.log(response);
-            for (var i = 0; i < response.items.length; i++) {
-                var title = response.items[i].snippet.thumbnails.title;
-                var videoId = response.items[i].id.videoId;
 
-                $("#player").append('<iframe width="555" height="370" src="https://www.youtube.com/embed/' + videoId + '"' + 'frameborder="0" allowfullscreen></iframe>');
-            }
-        });
-
-    });
-}
 
 function renderButtons(e) {
     $("#button-location").empty();
@@ -289,7 +290,6 @@ $("#newLocationSubmit").on("click", function() {
     
 
     $(".new-search").on("click", function() {
-        buttonYoutube();
     });
 });
 
